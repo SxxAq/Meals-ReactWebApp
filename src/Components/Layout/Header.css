@@ -1,0 +1,14 @@
+.navbar {
+  background-color: #11434b;
+}
+.header-img {
+  width: -webkit-fill-available;
+  opacity: 50%;
+  min-width: 720px;
+}
+.nav-item .nav-link-home {
+  margin: 0 20px 0 0;
+}
+.nav-item .nav-link-meals {
+  margin: 0 20px 0 0;
+}
