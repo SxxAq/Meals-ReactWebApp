@@ -1,0 +1,13 @@
+.button{
+    margin-left: 10px;
+    padding: 5px;
+    cursor: pointer;
+    font: inherit;
+    border-radius: 10px;
+    border: none;
+    padding: 0.50rem 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}

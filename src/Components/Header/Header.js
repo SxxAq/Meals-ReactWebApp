@@ -2,8 +2,9 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./Header.css";
-import HeaderImage from "../../assets/meal-back.jpg";
+
 import CartButton from "./CartButton";
+import BookButton from "./BookButton";
 
 function BootNavbar() {
   return (
@@ -19,13 +20,10 @@ function BootNavbar() {
               Meals
             </Nav.Link>
             <CartButton></CartButton>
+            <BookButton></BookButton>
           </Nav>
         </Container>
       </Navbar>
-
-      <div>
-        <img className="header-img" src={HeaderImage} alt="Header"></img>
-      </div>
     </>
   );
 }
