@@ -6,7 +6,7 @@ import "./Header.css";
 import CartButton from "./CartButton";
 import BookButton from "./BookButton";
 
-function BootNavbar() {
+function BootNavbar(props) {
   return (
     <>
       <Navbar bg="" variant="dark">
@@ -19,7 +19,7 @@ function BootNavbar() {
             <Nav.Link className="nav-link-meals" href="#Meals">
               Meals
             </Nav.Link>
-            <CartButton></CartButton>
+            <CartButton onClick={props.onShowCart}></CartButton>
             <BookButton></BookButton>
           </Nav>
         </Container>

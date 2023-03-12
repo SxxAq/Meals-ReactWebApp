@@ -1,5 +1,6 @@
 
 import Card from 'react-bootstrap/Card';
+import MealItemForm from '../Meals/MealItemForm';
 
 function MealCard(props) {
     
@@ -13,6 +14,7 @@ function MealCard(props) {
         </Card.Text>
         <h3>{props.price}</h3>
       </Card.Body>
+      <MealItemForm></MealItemForm>
     </Card>
   );
 }
