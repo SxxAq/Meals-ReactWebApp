@@ -1,33 +1,59 @@
-
 import React, { useState } from "react";
 
 import { Form } from "react-bootstrap";
-
+import "./MealItemform.css";
 export default function MealItemForm() {
-  const [inputVal, setInputVal]=useState(1);
+  let [inputVal, setInputVal] = useState(1);
 
+  const inputChangePlusHnadler = () => {
+    if (inputVal === 10) {
+      return;
+    } else {
+      inputVal = inputVal + 1;
+      setInputVal(inputVal);
+    }
+  };
 
-  const inputChangePlusHnadler=()=>{
-    setInputVal((inputVal)=>{
-      inputVal+=1
-    })
-  }
-
-  const inputChangeMinusHnadler=()=>{
-
-  }
-
+  const inputChangeMinusHnadler = () => {
+    if (inputVal === 0) {
+      return;
+    } else {
+      inputVal = inputVal - 1;
+      setInputVal(inputVal);
+    }
+  };
 
   return (
     <React.Fragment>
       <Form>
-      <div className="item-input">
-      <button onClick={inputChangeMinusHnadler} type="button">-</button>
-      <input value={inputVal} type="number" min="0" max="5" step="1"  ></input>
-      <button onClick={inputChangePlusHnadler} type="button">+</button>
-      </div>
-      <button type="button">Add</button>
-        
+        <div className="item-input">
+          <div className="input-form">
+            <button
+              className="minus-btn"
+              onClick={inputChangeMinusHnadler}
+              type="button"
+            >
+              -
+            </button>
+            <input
+              value={inputVal}
+              type="number"
+              min="0"
+              max="10"
+              step="1"
+            ></input>
+            <button
+              className="plus-btn"
+              onClick={inputChangePlusHnadler}
+              type="button"
+            >
+              +
+            </button>
+          </div>
+          <button className="add-btn" type="button">
+            Add to Cart
+          </button>
+        </div>
       </Form>
     </React.Fragment>
   );
