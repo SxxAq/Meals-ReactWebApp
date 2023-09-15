@@ -38,8 +38,8 @@ export default function Meals() {
   const CardRender = (props) => {
     const price = `$${props.price.toFixed(2)}`;
     return (
-      <div className={styles.item}>
-        <Card style={{ width: "18rem" }} key={props.id}>
+      <div className={styles.item} key={props.id}>
+        <Card style={{ width: "18rem" }} >
           <Card.Img variant="top" src={props.image} />
           <Card.Body>
             <Card.Title>{props.name}</Card.Title>

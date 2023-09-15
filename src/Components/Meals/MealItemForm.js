@@ -9,8 +9,7 @@ export default function MealItemForm() {
     if (inputVal === 10) {
       return;
     } else {
-      inputVal = inputVal + 1;
-      setInputVal(inputVal);
+      setInputVal((inputVal) => inputVal+=1);
     }
   };
 
@@ -18,15 +17,20 @@ export default function MealItemForm() {
     if (inputVal === 0) {
       return;
     } else {
-      inputVal = inputVal - 1;
-      setInputVal(inputVal);
+      setInputVal((inputVal) => inputVal-=1);
+    }
+  };
+  const inputChangeHandler = ({ target: { value } }) => {
+    if (inputVal <= 10 || inputVal >= 0) {
+      setInputVal(value);
     }
   };
 
   return (
     <React.Fragment>
-      <Form>
+      
         <div className="item-input">
+        <Form>
           <div className="input-form">
             <button
               className="minus-btn"
@@ -37,10 +41,8 @@ export default function MealItemForm() {
             </button>
             <input
               value={inputVal}
-              type="number"
-              min="0"
-              max="10"
-              step="1"
+              onChange={inputChangeHandler}
+              type="number" min="0" max="10" step="1" maxLength="2"
             ></input>
             <button
               className="plus-btn"
@@ -50,11 +52,12 @@ export default function MealItemForm() {
               +
             </button>
           </div>
+          </Form>
           <button className="add-btn" type="button">
             Add to Cart
           </button>
         </div>
-      </Form>
+      
     </React.Fragment>
   );
 }
