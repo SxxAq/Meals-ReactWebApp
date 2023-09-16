@@ -52,7 +52,7 @@ const Checkout = (props) => {
   //       return;
   //     }
   //   };
-  const formSubmitHandler = (event) => {
+  const confirmHandler = (event) => {
     event.preventDefault();
     const enteredName = nameInputRef.current.value;
     const enteredAddress = addressRef.current.value;
@@ -65,19 +65,26 @@ const Checkout = (props) => {
       enteredPhone.length === 10 &&
       !isEmpty(enteredAddress) &&
       !isEmpty(enteredCity) &&
-      enteredPin.length === 8;
+      enteredPin.length === 6;
 
     setFormInputValidity({
       name: !isEmpty(enteredName),
       phone: enteredPhone.length === 10,
       address: !isEmpty(enteredAddress),
       city: !isEmpty(enteredCity),
-      postalcode: enteredPin.length === 8,
+      postalcode: enteredPin.length === 6,
     });
 
     if (!formIsValid) {
       return;
     }
+    props.onConfirm({
+      name: enteredName,
+      phone: enteredPhone,
+      address: enteredAddress,
+      city: enteredCity,
+      postalcode: enteredPin,
+    });
   };
   const nameControlClasses = `${classes.control} ${
     formInputValidity.name ? "" : classes.invalid
@@ -96,7 +103,7 @@ const Checkout = (props) => {
   }`;
 
   return (
-    <form className={classes.form} onSubmit={formSubmitHandler}>
+    <form className={classes.form} onSubmit={confirmHandler}>
       <div className={nameControlClasses}>
         <label htmlFor="name">Your Name :</label>
         <input type="text" id="name" ref={nameInputRef} />
