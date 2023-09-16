@@ -1,27 +1,30 @@
-import React, { useState } from "react";
-import Header from "./Components/Header/Header";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import HomeSection from "./Components/Home/HomeSection";
-import Meals from "../src/Components/Meals/Meals";
-import "./App.css";
-import Cart from "./Components/Cart/Cart";
+import { useState } from 'react';
 
-export default function App() {
-  const [cartIsShown, setCartISShown] = useState(false);
+import Header from './components/Layout/Header';
+import Meals from './components/Meals/Meals';
+import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider';
+
+function App() {
+  const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
-    setCartISShown(true);
+    setCartIsShown(true);
   };
+
   const hideCartHandler = () => {
-    setCartISShown(false);
+    setCartIsShown(false);
   };
 
   return (
-    <React.Fragment>
-      {cartIsShown && <Cart onClose={hideCartHandler}/>}
-      <Header onShowCart={showCartHandler}></Header>
-      <HomeSection></HomeSection>
-      <Meals></Meals>
-    </React.Fragment>
+    <CartProvider>
+      {cartIsShown && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} />
+      <main>
+        <Meals />
+      </main>
+    </CartProvider>
   );
 }
+
+export default App;
