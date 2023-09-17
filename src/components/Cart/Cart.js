@@ -55,6 +55,7 @@ const Cart = (props) => {
     );
     setIsSubmitting(false);
     setDidSubmit(true);
+    cartCtx.clearCart();
     //
   };
 
@@ -83,7 +84,30 @@ const Cart = (props) => {
       {!isCheckout && modalActions}
     </React.Fragment>
   );
-  return <Modal onClose={props.onClose}></Modal>;
+
+  const isSubmittingModalContent = (
+    <div className={classes.total}>
+      <span>Sending Order Data.</span>
+    </div>
+  );
+  const didSubmitModalContent = (
+    <div className={classes.total}>
+      <span>Successfully sent the order.</span>
+      <div className={classes.actions}>
+        <button className={classes["button--alt"]} onClick={props.onClose}>
+          Close
+        </button>
+      </div>
+    </div>
+  );
+
+  return (
+    <Modal onClose={props.onClose}>
+      {!isSubmitting && !didSubmit && cartModalContent}
+      {isSubmitting && isSubmittingModalContent}
+      {!isSubmitting && didSubmit && didSubmitModalContent}
+    </Modal>
+  );
 };
 
 export default Cart;
